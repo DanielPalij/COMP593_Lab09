@@ -7,13 +7,15 @@ from poke_api import get_pokemon_info
 root = Tk()
 root.title('Pokemon Info Viewer')
 root.resizable(False, False)
+root.configure(bg='#856ff8')
+
 
 # Add frames to window
 frm_top = ttk.Frame(root)
 frm_top.grid(row=0, column=0, columnspan=2, pady=(20,10))
 
 frm_btm_left = ttk.LabelFrame(root, text='Info')
-frm_btm_left.grid(row=1, column=0,padx=20, pady=20, sticky=N)
+frm_btm_left.grid(row=1, column=0,padx=20, pady=20, sticky=N,)
 
 frm_btm_right = ttk.LabelFrame(root, text='Stats')
 frm_btm_right.grid(row=1, column=1, padx=20, pady=20)
