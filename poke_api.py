@@ -1,18 +1,24 @@
 import requests
 
-def get_pokemon(pinfo):
-    pinfo = pinfo.strip()
-    pinfo = pinfo.lower()
-    
-    url = f'https://pokeapi.co/api/v2/pokemon/{pinfo}'
-    r = requests.get(url)
-    
-    if r.status_code == 200:
-        
-        data = r.json()
-        return data
-       
-    
-    return None
+poke_api = 'https://pokeapi.co/api/v2/pokemon/'
 
-print(get_pokemon('ditto'))
+
+
+def get_pokemon_info(pname):
+    pname = str(pname).strip().lower()
+
+    url = poke_api + pname
+
+    print(f'getting information for {pname}...', end='')
+    resp_msg = requests.get(url)
+
+    if resp_msg.status_code == requests.codes.ok:
+        print('success')
+        return resp_msg.json()
+    else:
+        print('failure')
+        print(f'Response code: {resp_msg.status_code} ({resp_msg.reason})')
+        return
+    
+    
+        
